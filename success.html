@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered! – Tech Fest '25</title>
+  <!-- Google Fonts: Orbitron for titles, Inter for details -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07070e;
+      --bg-card: rgba(18, 18, 36, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #00d4ff;
+      --primary-glow: rgba(0, 212, 255, 0.4);
+      --secondary: #9b51e0;
+      --secondary-glow: rgba(155, 81, 224, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(155, 81, 224, 0.05) 0%, transparent 45%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 60px 40px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 550px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: bounce 2s infinite;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .event-badge {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 8px 18px;
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 50px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .details-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      margin: 25px 0 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .detail-item {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .detail-item span.icon {
+      color: var(--primary);
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      max-width: 200px;
+      padding: 14px 25px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #07070e;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 5px 15px rgba(0, 212, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 8px 22px rgba(0, 212, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    a:active {
+      transform: translateY(0);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="success-icon">🎉</div>
+    <h1 id="titleText">REGISTRATION CONFIRMED!</h1>
+    
+    <p id="msgText">Thank you for registering for Tech Fest '25.</p>
+    
+    <div id="eventContainer" style="display:none;">
+      <span class="event-badge" id="eventBadge"></span>
+    </div>
+
+    <p style="font-size: 0.95rem; margin-top: 15px;">A confirmation email has been sent to your inbox.</p>
+
+    <div class="details-box">
+      <div class="detail-item">
+        <span class="icon">📅</span>
+        <strong>April 14 - 26, 2025</strong>
+      </div>
+      <div class="detail-item">
+        <span class="icon">📍</span>
+        <strong>Department of CS&IT, NEDUET</strong>
+      </div>
+    </div>
+
+    <a href="index.html">← Events Home</a>
+  </div>
+
+  <script>
+    // Personalize using localStorage data
+    window.addEventListener('DOMContentLoaded', () => {
+      const name = localStorage.getItem('registeredName');
+      const event = localStorage.getItem('registeredEvent');
+
+      if (name && event) {
+        document.getElementById('titleText').textContent = 'REGISTRATION SUCCESSFUL!';
+        document.getElementById('msgText').innerHTML = `Hi <strong>${escapeHtml(name)}</strong>, thank you for registering! We have confirmed your participation for:`;
+        
+        const badge = document.getElementById('eventBadge');
+        badge.textContent = event;
+        document.getElementById('eventContainer').style.display = 'block';
+
+        // Clear details so refresh goes to generic
+        localStorage.removeItem('registeredName');
+        localStorage.removeItem('registeredEvent');
+      }
+    });
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+  <!-- Botpress Webchat Widget -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2026/06/05/11/20260605111649-2PLQ7PJN.js" defer></script>
+</body>
+</html>

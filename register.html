@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – Tech Fest '25</title>
+  <!-- Google Fonts: Orbitron for titles, Inter for forms -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07070e;
+      --bg-card: rgba(18, 18, 36, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #00d4ff;
+      --primary-glow: rgba(0, 212, 255, 0.4);
+      --secondary: #9b51e0;
+      --secondary-glow: rgba(155, 81, 224, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(155, 81, 224, 0.05) 0%, transparent 45%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(7, 7, 14, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .logo span {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--primary);
+      text-shadow: 0 0 8px var(--primary-glow);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      padding: 60px 20px;
+    }
+
+    .form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 40px 35px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 500px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #d1d5db;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(7, 7, 14, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.15);
+      background: rgba(7, 7, 14, 0.8);
+    }
+
+    select option {
+      background: #0f0f1c;
+      color: #fff;
+    }
+
+    button.btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #07070e;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.25);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button.btn-submit:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    button.btn-submit:active {
+      transform: translateY(0);
+    }
+
+    #msg {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      min-height: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .msg-warning {
+      color: #f59e0b;
+      text-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+    }
+
+    .msg-error {
+      color: #ef4444;
+      text-shadow: 0 0 8px rgba(239, 68, 68, 0.2);
+    }
+
+    .msg-success {
+      color: #10b981;
+      text-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+    }
+
+    footer {
+      background: #040409;
+      border-top: 1px solid var(--border-color);
+      padding: 30px 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span>⚡</span> TECHFEST '25
+    </div>
+    <nav>
+      <a href="index.html">Events</a>
+      <a href="register.html" class="active">Register</a>
+    </nav>
+  </header>
+
+  <div class="form-container">
+    <div class="form-box">
+      <h2>EVENT REGISTRATION</h2>
+      <p class="form-subtitle">Register for Tech Fest '25 events and workshops</p>
+
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" autocomplete="name">
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="name@example.com" autocomplete="email">
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="03XX-XXXXXXX">
+      </div>
+
+      <div class="input-group">
+        <label for="event">Select Event</label>
+        <select id="event">
+          <option value="" disabled selected>Choose an event or activity</option>
+          <option value="Koderz Kombat Round 1">Koderz Kombat Round 1 (Koderz Club)</option>
+          <option value="Urdu Tutor Buildathon">Urdu Tutor Buildathon (AI Alliance)</option>
+          <option value="AI Exploration Workshop">AI Exploration Workshop (AI Alliance)</option>
+          <option value="DataQuest">DataQuest (Data Insight-CSIT)</option>
+          <option value="Tech Baithak">Tech Baithak (CSIT Department)</option>
+          <option value="Gen AI Creathon">Gen AI Creathon (AI Alliance)</option>
+          <option value="Speed Programming Showdown">Speed Programming Showdown (CSIT NEDUET)</option>
+          <option value="Web Kode">Web Kode (Koderz Club)</option>
+          <option value="Cyber CTF">Cyber CTF (CyberSENTS)</option>
+          <option value="Cyber Courtroom Mock Trial">Cyber Courtroom Mock Trial (CyberSENTS)</option>
+          <option value="3D Blender Hands-on Workshop">3D Blender Hands-on Workshop (Gameverse)</option>
+        </select>
+      </div>
+
+      <button onclick="submitForm()" class="btn-submit">Submit Registration</button>
+      <p id="msg"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Tech Fest '25 - NED University. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Extract query parameter on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const eventParam = params.get('event');
+      if (eventParam) {
+        const select = document.getElementById('event');
+        // Find matching option (case insensitive or substring)
+        for (let i = 0; i < select.options.length; i++) {
+          const optValue = select.options[i].value;
+          if (optValue.toLowerCase() === eventParam.toLowerCase() || 
+              optValue.toLowerCase().startsWith(eventParam.toLowerCase())) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    });
+
+    async function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const event = document.getElementById('event').value;
+      const msgBox = document.getElementById('msg');
+
+      // Reset message
+      msgBox.textContent = '';
+      msgBox.className = '';
+
+      if (!name || !email || !phone || !event) {
+        msgBox.textContent = '⚠️ Please fill in all fields!';
+        msgBox.className = 'msg-warning';
+        return;
+      }
+
+      // Simple email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        msgBox.textContent = '⚠️ Please enter a valid email address!';
+        msgBox.className = 'msg-warning';
+        return;
+      }
+
+      // n8n Webhook URL
+      const WEBHOOK_URL = 'https://nullxcoder.app.n8n.cloud/webhook/3b880f6c-18c7-4ade-afd8-114d683c71ae';
+
+      msgBox.textContent = 'Submitting your registration...';
+      msgBox.className = 'msg-success';
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, event })
+        });
+        
+        if (res.ok) {
+          // Store basic details in localStorage to display on success page
+          localStorage.setItem('registeredName', name);
+          localStorage.setItem('registeredEvent', event);
+          window.location.href = 'success.html';
+        } else {
+          msgBox.textContent = '❌ Something went wrong! Please try again.';
+          msgBox.className = 'msg-error';
+        }
+      } catch (err) {
+        // Since the n8n webhook might be a mock URL, for user testing if the request fails
+        // but it's a network error on the default placeholder URL, we show an explicit message.
+        console.error('Registration submission error:', err);
+        msgBox.textContent = '❌ Network error! (Check if webhook URL is configured)';
+        msgBox.className = 'msg-error';
+      }
+    }
+  </script>
+  <!-- Botpress Webchat Widget -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2026/06/05/11/20260605111649-2PLQ7PJN.js" defer></script>
+</body>
+</html>
